@@ -1,2 +1,33 @@
 https://cxis.me/2020/04/06/APIGateway%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%80%9D%E8%B7%AF/
 https://tech.youzan.com/api-gateway-in-practice/
+
+# 请求测试
+# Java-OkHttp
+
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "60a2f826097e3eee329a63d5d9335c7da714c948e675c8da171a5c5cfaeb5d309368cd528a69731e39c4be502295b2f470e04006cd8cdee703570c851ce701c91c9ff61b242302710c81a031088d50212e1de68e90464509b0a44dc7bf7495c691a0dd2b47284b2ab2ec023793773916b9420be010394722640631e30fbfb5c4");
+Request request = new Request.Builder()
+  .url("http://localhost:8080/api/v1/tradecenter/queryOrders?out=google&nonce=357165479&sig=7ec012091c34ed50f1b2431ef8f0fb67ef8d57e2")
+  .method("POST", body)
+  .addHeader("Content-Type", "text/plain")
+  .build();
+Response response = client.newCall(request).execute();
+
+
+# js
+
+var settings = {
+  "url": "http://localhost:8080/api/v1/tradecenter/queryOrders?out=google&nonce=357165479&sig=7ec012091c34ed50f1b2431ef8f0fb67ef8d57e2",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Content-Type": "text/plain"
+  },
+  "data": "60a2f826097e3eee329a63d5d9335c7da714c948e675c8da171a5c5cfaeb5d309368cd528a69731e39c4be502295b2f470e04006cd8cdee703570c851ce701c91c9ff61b242302710c81a031088d50212e1de68e90464509b0a44dc7bf7495c691a0dd2b47284b2ab2ec023793773916b9420be010394722640631e30fbfb5c4",
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
