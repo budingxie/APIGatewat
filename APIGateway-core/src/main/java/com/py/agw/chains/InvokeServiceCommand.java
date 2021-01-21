@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
 import java.security.SecureRandom;
 
+import static com.py.agw.model.ErrorCode.SERVICE_ERROR;
+
 /**
  * description：泛化调用dubbo服务，将结果加密返回
  *
@@ -19,7 +21,7 @@ import java.security.SecureRandom;
  * @version 1.0.0
  * @date 2021/1/14
  */
-public class InvokeServiceCommand extends AbstractCommand{
+public class InvokeServiceCommand extends AbstractCommand {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InvokeServiceCommand.class);
 
@@ -44,11 +46,17 @@ public class InvokeServiceCommand extends AbstractCommand{
 
             int nonce = new SecureRandom().nextInt();
             String encryptData = CodecUtil.encrypt(outDO.getCode(), jsonData);
+            String sign = CodecUtil.sign(outDO.getCode(), encryptData, nonce + "");
 
-
+            context.setRetSign(sign);
+            context.setRetNonce(nonce);
+            context.setRetModel(encryptData);
             return false;
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.warn("invoke dubbo error, context:{}", JSON.toJSON(context));
+            context.setRetCode(SERVICE_ERROR.getCode());
+            context.setRetModel(SERVICE_ERROR.getMsg());
+            context.setSuccess(false);
             return true;
         }
     }

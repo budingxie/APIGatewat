@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * description
  *
- * @author pengyou@xiaomi.com
+ * @author budingxie
  * @version 1.0.0
  * @date 2021/1/14
  */
@@ -21,6 +21,6 @@ public class BlackIpDao {
     private BlackIpDOMapper blackIpDOMapper;
 
     public List<BlackIpDO> queryById(String ip) {
-        return blackIpDOMapper.selectById(ip);
+        return blackIpDOMapper.selectByIp(ip);
     }
 }

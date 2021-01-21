@@ -10,9 +10,9 @@ import java.util.Map;
 import static com.py.agw.constants.Constants.*;
 
 /**
- * description
+ * description：责任链中的上下文数据对象
  *
- * @author pengyou@xiaomi.com
+ * @author budingxie
  * @version 1.0.0
  * @date 2021/1/13
  */
@@ -67,7 +67,8 @@ public class CommonContext extends ContextBase {
     }
 
     public Map<String, String> getReqParamData() {
-        return JSON.parseObject(reqParams.get(DATA), new TypeReference<Map<String, String>>(){});
+        return JSON.parseObject(reqParams.get(DATA), new TypeReference<Map<String, String>>() {
+        });
     }
 
     public int getRetCode() {

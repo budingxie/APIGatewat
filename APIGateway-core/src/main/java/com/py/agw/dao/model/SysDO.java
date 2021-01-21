@@ -1,15 +1,16 @@
 package com.py.agw.dao.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * description
  *
- * @author pengyou@xiaomi.com
+ * @author budingxie
  * @version 1.0.0
  * @date 2021/1/13
  */
-public class SysDO {
+public class SysDO implements Serializable {
 
     private Long id;
 

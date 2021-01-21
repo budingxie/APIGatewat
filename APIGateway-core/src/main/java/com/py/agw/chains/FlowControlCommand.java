@@ -11,7 +11,7 @@ import static com.py.agw.model.ErrorCode.FREQUENTLY_ACCESS;
 /**
  * description：流控，指定时间内同一个IP不能超过指定的次数
  *
- * @author pengyou@xiaomi.com
+ * @author budingxie
  * @version 1.0.0
  * @date 2021/1/14
  */

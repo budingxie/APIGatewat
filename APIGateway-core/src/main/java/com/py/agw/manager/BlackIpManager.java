@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * description
  *
- * @author pengyou@xiaomi.com
+ * @author budingxie
  * @version 1.0.0
  * @date 2021/1/14
  */
 @Component
-public class BlackIPManager {
+public class BlackIpManager {
 
     @Resource
     private BlackIpDao blackIpDao;

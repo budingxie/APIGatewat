@@ -1,15 +1,16 @@
 package com.py.agw.dao.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * description：对应 agw_black_ip 表
  *
- * @author pengyou@xiaomi.com
+ * @author budingxie
  * @version 1.0.0
  * @date 2021/1/14
  */
-public class BlackIpDO {
+public class BlackIpDO implements Serializable {
 
     private Long id;
 
